@@ -1,0 +1,57 @@
+package com.java.basicprograms;
+import javax.swing.JOptionPane;
+
+public class ATMMachine {
+
+    public static void main(String[] args) {
+
+        int balance = 20000, withdraw, deposit, num;
+
+        while(true) {
+            String input = JOptionPane.showInputDialog(
+                    "Welcome to ATM Machine\n" +
+                            "1. Withdraw\n" +
+                            "2. Deposit\n" +
+                            "3. Check Balance\n" +
+                            "4. EXIT\n\n" +
+                            "Enter your choice (1-4):");
+
+            num = Integer.parseInt(input);
+
+            switch(num) {
+                case 1:
+                    input = JOptionPane.showInputDialog("Enter Amount to be Withdrawn:");
+                    withdraw = Integer.parseInt(input);
+
+                    if(balance >= withdraw) {
+                        balance = balance - withdraw;
+                        JOptionPane.showMessageDialog(null, "Balance Amount is: " + balance + "\nPlease collect money");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "You don't have enough money for withdrawal");
+                    }
+                    break;
+
+                case 2:
+                    input = JOptionPane.showInputDialog("Enter Amount to Deposit:");
+                    deposit = Integer.parseInt(input);
+
+                    balance = balance + deposit;
+                    JOptionPane.showMessageDialog(null, "Balance Amount is: " + balance + "\nMoney has been deposited successfully");
+                    break;
+
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Balance of your Account is: " + balance);
+                    break;
+
+                case 4:
+                    JOptionPane.showMessageDialog(null, "Thank you for using the ATM Machine.");
+                    System.exit(0);
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid choice. Please enter a number from 1 to 4.");
+            }
+        }
+    }
+}
